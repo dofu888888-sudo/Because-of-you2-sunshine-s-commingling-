@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="game-build" content="2026-09-08-v1.6.0-title-fix-js-fix">
+  <meta name="game-build" content="2026-09-08-v1.7.0-ending-timing-cleanup">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=20260908a">
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=20260908a">
@@ -188,7 +188,7 @@ button{font:inherit}
     <div class="title-footer-mask"></div>
     <div class="title-author">作者：LeoTsai</div>
     <div class="title-track" id="titleTrackLabel">♪ Graduation Day</div>
-    <div class="title-version">Ver.1.6.0</div>
+    <div class="title-version">Ver.1.7.0</div>
     <button id="startBtn" class="hotspot" aria-label="開始故事"></button>
     <button id="continueBtn" class="hotspot" aria-label="繼續"></button>
     <button id="moreBtn" class="hotspot" aria-label="更多 LeoTsai 製作"></button>
@@ -221,8 +221,7 @@ button{font:inherit}
     <div class="ending-top">
       <span class="chapter-tag">第四百章後記</span>
       <h2 id="endingTitle">結尾相簿</h2>
-      <p id="endingHint">照片播放時可輕觸圖片或按「下一張」前進。這次再補進更多日常照片與其他角色合照，包含雨婕帶宇軒回鄉下時和弟弟一起的照片；最後一張依然是睡在紅色機車上的虎斑貓。</p>
-    </div>
+</div>
     <div class="ending-photo-wrap">
       <img id="endingPhoto" class="ending-photo" src="" alt="結尾照片">
     </div>
@@ -231,8 +230,7 @@ button{font:inherit}
       <div id="endingCounter"></div>
     </div>
     <div id="endingFinalText" class="ending-final">♪ 結尾播放：Bright Playful Motif</div>
-    <div id="endingCredits" class="ending-credits">原作／企劃：LeoTsai　・　劇本與介面協作：ChatGPT
-    <br>結尾相簿：宇軒與雨婕的日常剪影　・　最後一張：睡在紅色機車上的虎斑貓</div>
+    <div id="endingCredits" class="ending-credits">原作／企劃：LeoTsai　・　劇本與介面協作：ChatGPT</div>
     <div class="ending-actions">
       <button id="endingNextBtn" class="ending-btn primary" type="button">下一張</button>
       <button id="endingBackBtn" class="ending-btn ending-hidden" type="button">回到標題</button>
@@ -247,7 +245,7 @@ button{font:inherit}
 
 <audio id="titleMusic" src="./title-theme.mp3?v=20260908a" loop preload="auto"></audio>
 <audio id="bgm" preload="auto"></audio>
-<audio id="endingMusic" src="./bgm-track-1.mp3?v=20260908a" loop preload="auto"></audio>
+<audio id="endingMusic" src="./bgm-track-1.mp3?v=20260908a" preload="auto"></audio>
 
 <script>
 (()=>{
@@ -261,37 +259,37 @@ const bgmTracks=[
   {name:"Sunshine on your face",src:"./bgm-track-2.mp3?v=20260908a"}
 ];
 const endingSlides=[
-{"src":"./ending-01.png?v=20260908b","caption":"夕陽窗邊的溫馨相依"},
-  {"src":"./ending-02.png?v=20260908b","caption":"台北夕陽下的冬日戀曲"},
-  {"src":"./ending-03.png?v=20260908b","caption":"台北夕陽下的咖啡館約會"},
-  {"src":"./ending-04.png?v=20260908b","caption":"陽光下澆灌綠意的溫柔日常"},
-  {"src":"./ending-05.png?v=20260908b","caption":"暖光下的幸福日常"},
-  {"src":"./ending-06.png?v=20260908b","caption":"夕陽廚房裡的甜蜜共煮"},
-  {"src":"./ending-07.png?v=20260908b","caption":"夕陽下的台灣市場漫步"},
-  {"src":"./ending-08.png?v=20260908b","caption":"台北金色夕陽下的日常約會"},
-  {"src":"./ending-09.png?v=20260908b","caption":"台北101夕陽街角回眸"},
-  {"src":"./ending-12.png?v=20260908b","caption":"夕陽公車上的城市心動"},
-  {"src":"./ending-13.png?v=20260908b","caption":"書店午後的溫柔邂逅"},
-  {"src":"./ending-14.png?v=20260908b","caption":"夕陽河畔的單車戀曲"},
-  {"src":"./ending-15.png?v=20260908b","caption":"夕陽下的陽台澆花時光"},
-  {"src":"./ending-16.png?v=20260908b","caption":"台灣夜市戀曲與鹽酥雞"},
-  {"src":"./ending-17.png?v=20260908b","caption":"台北夕陽下的回眸微笑"},
-  {"src":"./ending-10.png?v=20260908b","caption":"宇軒鏡頭下的雨婕"},
-  {"src":"./ending-11.png?v=20260908b","caption":"睡在紅色機車上的虎斑貓"},
-  {"src":"./ending-18.png?v=20260908c","caption":"陽光下的辦公室午餐時光"},
-  {"src":"./ending-19.png?v=20260908c","caption":"夕陽下的溫暖辦公日常"},
-  {"src":"./ending-20.png?v=20260908c","caption":"夕陽咖啡館的溫暖友情"},
-  {"src":"./ending-21.png?v=20260908c","caption":"台北夜市的浪漫邂逅"},
-  {"src":"./ending-22.png?v=20260908c","caption":"溫暖居酒屋好友歡聚敬酒"},
-  {"src":"./ending-23.png?v=20260908c","caption":"黃昏便利商店的溫暖友情"},
-  {"src":"./ending-24.png?v=20260908c","caption":"夕陽下的鄉間回眸"},
-  {"src":"./ending-25.png?v=20260908c","caption":"午後金色稻田邊的蜻蜓午後"},
-  {"src":"./ending-26.png?v=20260908c","caption":"溫馨陽光辦公室團體自拍"},
-  {"src":"./ending-27.png?v=20260908c","caption":"台北咖啡館的午後三人自拍"},
-  {"src":"./ending-28.png?v=20260908c","caption":"鄉間金色時光三人合照"},
-  {"src":"./ending-29.png?v=20260908c","caption":"鄉間午後的溫暖團聚"}
+  {"src":"./ending-01.png?v=20260908d","caption":"夕陽窗邊的溫馨相依"},
+  {"src":"./ending-02.png?v=20260908d","caption":"台北夕陽下的冬日戀曲"},
+  {"src":"./ending-03.png?v=20260908d","caption":"台北夕陽下的咖啡館約會"},
+  {"src":"./ending-04.png?v=20260908d","caption":"陽光下澆灌綠意的溫柔日常"},
+  {"src":"./ending-05.png?v=20260908d","caption":"暖光下的幸福日常"},
+  {"src":"./ending-06.png?v=20260908d","caption":"夕陽廚房裡的甜蜜共煮"},
+  {"src":"./ending-07.png?v=20260908d","caption":"夕陽下的台灣市場漫步"},
+  {"src":"./ending-08.png?v=20260908d","caption":"台北金色夕陽下的日常約會"},
+  {"src":"./ending-09.png?v=20260908d","caption":"台北101夕陽街角回眸"},
+  {"src":"./ending-10.png?v=20260908d","caption":"宇軒鏡頭下的雨婕"},
+  {"src":"./ending-12.png?v=20260908d","caption":"夕陽公車上的城市心動"},
+  {"src":"./ending-13.png?v=20260908d","caption":"書店午後的溫柔邂逅"},
+  {"src":"./ending-14.png?v=20260908d","caption":"夕陽河畔的單車戀曲"},
+  {"src":"./ending-15.png?v=20260908d","caption":"夕陽下的陽台澆花時光"},
+  {"src":"./ending-16.png?v=20260908d","caption":"台灣夜市戀曲與鹽酥雞"},
+  {"src":"./ending-17.png?v=20260908d","caption":"台北夕陽下的回眸微笑"},
+  {"src":"./ending-18.png?v=20260908d","caption":"陽光下的辦公室午餐時光"},
+  {"src":"./ending-19.png?v=20260908d","caption":"夕陽下的溫暖辦公日常"},
+  {"src":"./ending-20.png?v=20260908d","caption":"夕陽咖啡館的溫暖友情"},
+  {"src":"./ending-21.png?v=20260908d","caption":"台北夜市的浪漫邂逅"},
+  {"src":"./ending-22.png?v=20260908d","caption":"溫暖居酒屋好友歡聚敬酒"},
+  {"src":"./ending-23.png?v=20260908d","caption":"黃昏便利商店的溫暖友情"},
+  {"src":"./ending-24.png?v=20260908d","caption":"夕陽下的鄉間回眸"},
+  {"src":"./ending-25.png?v=20260908d","caption":"午後金色稻田邊的蜻蜓午後"},
+  {"src":"./ending-26.png?v=20260908d","caption":"溫馨陽光辦公室團體自拍"},
+  {"src":"./ending-27.png?v=20260908d","caption":"台北咖啡館的午後三人自拍"},
+  {"src":"./ending-28.png?v=20260908d","caption":"鄉間金色時光三人合照"},
+  {"src":"./ending-29.png?v=20260908d","caption":"鄉間午後的溫暖團聚"},
+  {"src":"./ending-11.png?v=20260908d","caption":"睡在紅色機車上的虎斑貓"}
 ];
-let endingIndex=0,endingTimer=null,endingFinished=false;
+let endingIndex=0,endingTimer=null,endingFinished=false,endingSlideMs=7800;
 let bgmIndex=0;
 function loadBgmTrack(index,autoplay=false){
   bgmIndex=(index+bgmTracks.length)%bgmTracks.length;
@@ -306,7 +304,7 @@ function loadBgmTrack(index,autoplay=false){
 }
 bgm.addEventListener("ended",()=>loadBgmTrack(bgmIndex+1,true));
 loadBgmTrack(0,false);
-document.documentElement.dataset.build="v1.6.0-title-fix-js-fix";
+document.documentElement.dataset.build="v1.7.0-ending-timing-cleanup";
 const play=a=>a.play().catch(()=>{});
 function save(){localStorage.setItem("winterWarmSave",JSON.stringify({i,flags,history,observations,musicOn,unlocks}));}
 function openModal(id){q(id).classList.add("open");}
@@ -352,11 +350,11 @@ function refreshEndingUi(){
   setTimeout(()=>{img.src=slide.src;img.alt=slide.caption;q("endingCaption").textContent=slide.caption;q("endingCounter").textContent=`${endingIndex+1} / ${endingSlides.length}`;img.classList.add("show");},50);
   endingFinished=endingIndex>=endingSlides.length-1;
   q("endingTitle").textContent=endingFinished?"—— 遊戲結束 ——":"結尾相簿・ED";
-  q("endingFinalText").textContent=endingFinished?"這世上的愛情，不一定都要轟轟烈烈。只要彼此相處得開心、舒適，就足夠了。":"♪ 結尾播放：Bright Playful Motif　／　輕觸照片也可往下一張";
+  q("endingFinalText").textContent=endingFinished?"這世上的愛情，不一定都要轟轟烈烈。只要彼此相處得開心、舒適，就足夠了。":"♪ Bright Playful Motif";
   q("endingBackBtn").classList.toggle("ending-hidden",!endingFinished);
   q("endingNextBtn").textContent=endingFinished?"再看一次":"下一張";
   clearEndingTimer();
-  if(!endingFinished)endingTimer=setTimeout(()=>advanceEnding(),4200);
+  if(!endingFinished)endingTimer=setTimeout(()=>advanceEnding(),endingSlideMs);
 }
 function advanceEnding(){
   if(endingFinished){endingIndex=0;endingFinished=false;refreshEndingUi();return;}
@@ -368,7 +366,13 @@ function showEndingAlbum(){
   title.classList.remove("active");story.classList.remove("active");ending.classList.add("active");
   tm.pause();bgm.pause();
   endingIndex=0;endingFinished=false;
-  refreshEndingUi();
+  const syncTiming=()=>{
+    if(Number.isFinite(em.duration)&&em.duration>0){
+      endingSlideMs=Math.max(6000,Math.floor((em.duration*1000)/endingSlides.length));
+    }
+    refreshEndingUi();
+  };
+  if(em.readyState>=1)syncTiming();else{endingSlideMs=7800;refreshEndingUi();em.addEventListener("loadedmetadata",syncTiming,{once:true});}
   if(musicOn){em.currentTime=0;play(em);}
 }
 function leaveEndingAlbum(){
