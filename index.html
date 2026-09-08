@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="game-build" content="2026-09-08-v1.5.0-ch400-ending-gallery-plus">
+  <meta name="game-build" content="2026-09-08-v1.5.1-ch400-ending-gallery-more">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png?v=20260908a">
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=20260908a">
@@ -185,7 +185,7 @@ button{font:inherit}
     <div class="title-footer-mask"></div>
     <div class="title-author">作者：LeoTsai</div>
     <div class="title-track" id="titleTrackLabel">♪ Graduation Day</div>
-    <div class="title-version">Ver.1.5.0</div>
+    <div class="title-version">Ver.1.5.1</div>
     <button id="startBtn" class="hotspot" aria-label="開始故事"></button>
     <button id="continueBtn" class="hotspot" aria-label="繼續"></button>
     <button id="moreBtn" class="hotspot" aria-label="更多 LeoTsai 製作"></button>
@@ -218,7 +218,7 @@ button{font:inherit}
     <div class="ending-top">
       <span class="chapter-tag">第四百章後記</span>
       <h2 id="endingTitle">結尾相簿</h2>
-      <p id="endingHint">照片播放時可輕觸圖片或按「下一張」前進。這次補進更多日常照片，最後一張依然是睡在紅色機車上的虎斑貓。</p>
+      <p id="endingHint">照片播放時可輕觸圖片或按「下一張」前進。這次再補進更多日常照片與其他角色合照，包含雨婕帶宇軒回鄉下時和弟弟一起的照片；最後一張依然是睡在紅色機車上的虎斑貓。</p>
     </div>
     <div class="ending-photo-wrap">
       <img id="endingPhoto" class="ending-photo" src="" alt="結尾照片">
@@ -258,7 +258,7 @@ const bgmTracks=[
   {name:"Sunshine on your face",src:"./bgm-track-2.mp3?v=20260908a"}
 ];
 const endingSlides=[
-  {"src":"./ending-01.png?v=20260908b","caption":"夕陽窗邊的溫馨相依"},
+{"src":"./ending-01.png?v=20260908b","caption":"夕陽窗邊的溫馨相依"},
   {"src":"./ending-02.png?v=20260908b","caption":"台北夕陽下的冬日戀曲"},
   {"src":"./ending-03.png?v=20260908b","caption":"台北夕陽下的咖啡館約會"},
   {"src":"./ending-04.png?v=20260908b","caption":"陽光下澆灌綠意的溫柔日常"},
@@ -274,7 +274,19 @@ const endingSlides=[
   {"src":"./ending-16.png?v=20260908b","caption":"台灣夜市戀曲與鹽酥雞"},
   {"src":"./ending-17.png?v=20260908b","caption":"台北夕陽下的回眸微笑"},
   {"src":"./ending-10.png?v=20260908b","caption":"宇軒鏡頭下的雨婕"},
-  {"src":"./ending-11.png?v=20260908b","caption":"睡在紅色機車上的虎斑貓"}
+  {"src":"./ending-11.png?v=20260908b","caption":"睡在紅色機車上的虎斑貓"},
+  {"src":"./ending-18.png?v=20260908c","caption":"陽光下的辦公室午餐時光"}
+  {"src":"./ending-19.png?v=20260908c","caption":"夕陽下的溫暖辦公日常"}
+  {"src":"./ending-20.png?v=20260908c","caption":"夕陽咖啡館的溫暖友情"}
+  {"src":"./ending-21.png?v=20260908c","caption":"台北夜市的浪漫邂逅"}
+  {"src":"./ending-22.png?v=20260908c","caption":"溫暖居酒屋好友歡聚敬酒"}
+  {"src":"./ending-23.png?v=20260908c","caption":"黃昏便利商店的溫暖友情"}
+  {"src":"./ending-24.png?v=20260908c","caption":"夕陽下的鄉間回眸"}
+  {"src":"./ending-25.png?v=20260908c","caption":"午後金色稻田邊的蜻蜓午後"}
+  {"src":"./ending-26.png?v=20260908c","caption":"溫馨陽光辦公室團體自拍"}
+  {"src":"./ending-27.png?v=20260908c","caption":"台北咖啡館的午後三人自拍"}
+  {"src":"./ending-28.png?v=20260908c","caption":"鄉間金色時光三人合照"}
+  {"src":"./ending-29.png?v=20260908c","caption":"鄉間午後的溫暖團聚"}
 ];
 let endingIndex=0,endingTimer=null,endingFinished=false;
 let bgmIndex=0;
@@ -291,7 +303,7 @@ function loadBgmTrack(index,autoplay=false){
 }
 bgm.addEventListener("ended",()=>loadBgmTrack(bgmIndex+1,true));
 loadBgmTrack(0,false);
-document.documentElement.dataset.build="v1.5.0-ch400-ending-gallery-plus";
+document.documentElement.dataset.build="v1.5.1-ch400-ending-gallery-more";
 const play=a=>a.play().catch(()=>{});
 function save(){localStorage.setItem("winterWarmSave",JSON.stringify({i,flags,history,observations,musicOn,unlocks}));}
 function openModal(id){q(id).classList.add("open");}
